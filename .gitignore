@@ -1,0 +1,13 @@
+# Godot specific ignores
+.import/
+.godot/
+.mono/
+.mono-config/
+export/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Other common ignores
+*.log

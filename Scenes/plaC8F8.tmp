@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccv4kwm41p6k2"]
+
+[ext_resource type="Script" path="res://Scripts/player_human.gd" id="1_lht31"]
+[ext_resource type="Texture2D" uid="uid://kdp1dy7snvn1" path="res://Sunny Land Collection Files/Packs/Scharacter.png" id="2_07ar0"]
+[ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_rs10v"]
+[ext_resource type="Script" path="res://Scripts/shooting_system.gd" id="4_im3t8"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vsgo3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:syncPos")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:syncRot")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="PlayerHuman" type="CharacterBody2D"]
+collision_mask = 99
+script = ExtResource("1_lht31")
+speed = 250
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_07ar0")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -60
+limit_top = -60
+limit_right = 1190
+limit_bottom = 685
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-16, 0)
+scale = Vector2(1.05, 1.2)
+polygon = PackedVector2Array(-2.85714, -11.6667, 0.952381, -16.6667, 7.61905, -16.6667, 12.381, -11.6667, 15.2381, -3.33333, 18.0952, 0, 17.1429, 4.16667, 26.6667, 4.16667, 32.381, 5.83333, 40.9524, 6.66667, 40.9524, 10, 31.4286, 10, 23.8095, 11.6667, 19.0476, 15.8333, 1.90476, 16.6667, -3.80952, 11.6667, -10.4762, 10, -10.4762, -1.66667, -10.4762, -10)
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("3_rs10v")
+
+[node name="ShootingSystem" type="Marker2D" parent="."]
+position = Vector2(28, 10)
+script = ExtResource("4_im3t8")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.01
+delta_interval = 0.01
+replication_config = SubResource("SceneReplicationConfig_vsgo3")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvdpik6wwo5mk"]
+
+[ext_resource type="Texture2D" uid="uid://byxyp8ri04fqf" path="res://Sunny Land Collection Files/Packs/Winter Pack/ENVIRONMENT/Background/sky.png" id="1_6qgtu"]
+
+[node name="BG" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Back" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(575, 322)
+scale = Vector2(2.78846, 2.5)
+texture = ExtResource("1_6qgtu")

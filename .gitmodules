@@ -1,0 +1,3 @@
+[submodule "TankBattleSinglePlayerVsAi"]
+	path = TankBattleSinglePlayerVsAi
+	url = https://github.com/armandkon/TankBattleSinglePlayerVsAi.git

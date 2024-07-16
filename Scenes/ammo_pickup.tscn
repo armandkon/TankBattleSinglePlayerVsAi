@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://3al56iaftiig"]
+
+[ext_resource type="Texture2D" uid="uid://by8f4yl6q7u73" path="res://Sunny Land Collection Files/Packs/ammo_pickup.png" id="1_32oly"]
+[ext_resource type="Script" path="res://Scripts/ammo_pickup.gd" id="1_ekhlm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tejeo"]
+size = Vector2(14, 14)
+
+[node name="AmmoPickup" type="Area2D"]
+collision_layer = 64
+script = ExtResource("1_ekhlm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_32oly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tejeo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
