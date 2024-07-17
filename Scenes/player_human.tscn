@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccv4kwm41p6k2"]
 
 [ext_resource type="Script" path="res://Scripts/player_human.gd" id="1_lht31"]
-[ext_resource type="Texture2D" uid="uid://bymaoub0wia6a" path="res://Sunny Land Collection Files/Packs/tank2.png" id="2_snrqg"]
+[ext_resource type="Texture2D" uid="uid://wsp6klxynw83" path="res://tank2MirroredToFixPerceivedDirection.png" id="2_x3pid"]
 [ext_resource type="Script" path="res://Scripts/health_system.gd" id="3_rs10v"]
 [ext_resource type="Script" path="res://Scripts/shooting_system.gd" id="4_im3t8"]
 [ext_resource type="Theme" uid="uid://caskmp53b5u7" path="res://Themes/ui.theme" id="5_g8nxg"]
@@ -29,14 +29,13 @@ script = ExtResource("1_lht31")
 speed = 250
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -4)
-rotation = 1.5708
+position = Vector2(0, 8.88889)
+rotation = -1.5708
 scale = Vector2(0.198925, 0.185552)
-texture = ExtResource("2_snrqg")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_x3pid")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-6, -1.42109e-14)
+position = Vector2(-1.43051e-06, 5.19486e-13)
 rotation = 1.5708
 scale = Vector2(2.6129, 1.82178)
 polygon = PackedVector2Array(-10, -10.7407, -8.94737, -16.6667, -8.94737, -17.4074, -6.84211, -12.2222, -4.21053, -17.4074, 5.26316, -16.6667, 7.36842, -12.2222, 9.47369, -15.9259, 11.5789, 4.81481, 14.7368, 4.07407, 13.1579, 9.25926, 6.84211, 15.1852, -5.78947, 15.1852, -13.1579, 10, -14.7368, 4.07407, -14.7368, 4.07407, -10.5263, 5.55556)

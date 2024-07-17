@@ -34,9 +34,6 @@ func _physics_process(delta):
 	
 	human_position.emit(global_position.x, global_position.y)
 	
-	print("rotation: ", rotation)
-	print("global_rotation: ", rotation_degrees)
-	
 func _input(event):
 	
 	if Input.is_action_pressed("move_down"):
