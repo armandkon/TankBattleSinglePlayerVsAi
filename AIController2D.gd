@@ -23,6 +23,8 @@ func get_obs() -> Dictionary:
 		player_ai.human_position_x,
 		player_ai.human_position_y,
 		player_ai.global_rotation,
+		player_ai.current_distance_from_enemy,		
+		player_ai.angle_in_radians,
 		#player_ai.human_bullet_position.x,
 		#player_ai.human_bullet_position.y,
 		#player_ai.human_bullet_direction.x,
