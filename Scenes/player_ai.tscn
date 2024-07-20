@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtmqd2olooo6o"]
+[gd_scene load_steps=10 format=3 uid="uid://dtmqd2olooo6o"]
 
 [ext_resource type="Script" path="res://Scripts/player_ai.gd" id="1_pu56q"]
 [ext_resource type="Texture2D" uid="uid://wsp6klxynw83" path="res://tank2MirroredToFixPerceivedDirection.png" id="2_y2ofo"]
@@ -22,10 +22,28 @@ properties/3/path = NodePath(".:syncRot")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gqds7"]
+
 [node name="PlayerAI" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.9, 0.9)
 collision_mask = 99
 script = ExtResource("1_pu56q")
+obstacle_collision_penalty = -0.2
+approaching_enemy_reward = 0.04
+leaving_enemy_penalty = -0.03
+angled_to_enemy_reward = 0.4
+not_angled_to_enemy_penalty = -0.018
+enemy_in_line_of_sight_reward = 1.0
+enemy_behind_obstacle_penalty = -0.5
+enemy_completely_out_of_sight_penalty = -0.015
+shooting_reward = 0.05
+valid_shot_reward = 0.75
+missed_target_penalty = -0.1
+enemy_takes_damage_reward = 0.75
+enemy_dies_reward = 5.0
+take_damage_penalty = -1.0
+death_penalty = -5.0
+reset_penalty = -2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.22222, 6.66667)
@@ -60,9 +78,37 @@ replication_config = SubResource("SceneReplicationConfig_vsgo3")
 
 [node name="AIController2D" type="Node2D" parent="."]
 script = ExtResource("7_h7qjk")
+metadata/_edit_lock_ = true
 
 [node name="ShootingSystemAI" type="Marker2D" parent="."]
 position = Vector2(37.7778, 2.22222)
 script = ExtResource("7_wdjxt")
+metadata/_edit_lock_ = true
+
+[node name="FrontRayCastEnemy" type="RayCast2D" parent="."]
+position = Vector2(36.6667, 2.22222)
+target_position = Vector2(1250, 0)
+collision_mask = 4
+
+[node name="Line2D" type="Line2D" parent="FrontRayCastEnemy"]
+material = SubResource("CanvasItemMaterial_gqds7")
+position = Vector2(20.6158, -10)
+scale = Vector2(26.7648, 4.575)
+points = PackedVector2Array(0, 2.22222, 10, 2.22222, 17.1725, 2.22223, 20, 2.22222, 27.7778, 2.22222, 33.3333, 2.22222, 45.5556, 2.22222)
+width = 1.0
+default_color = Color(0.333333, 1, 0.886275, 1)
+
+[node name="FrontRayCastObstacleAndEnemy" type="RayCast2D" parent="."]
+position = Vector2(36.6667, 2.22222)
+target_position = Vector2(1250, 0)
+collision_mask = 6
+
+[node name="Line2D" type="Line2D" parent="FrontRayCastObstacleAndEnemy"]
+material = SubResource("CanvasItemMaterial_gqds7")
+position = Vector2(20.055, -10)
+scale = Vector2(26.204, 4.575)
+points = PackedVector2Array(0, 2.22222, 10, 2.22222, 17.1725, 2.22223, 20, 2.22222, 27.7778, 2.22222, 33.3333, 2.22222, 45.5556, 2.22222)
+width = 1.0
+default_color = Color(0.333333, 1, 0.886275, 1)
 
 [connection signal="damage_taken" from="HealthSystem" to="Lifebar" method="_on_health_system_damage_taken"]

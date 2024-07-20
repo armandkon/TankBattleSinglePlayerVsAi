@@ -57,9 +57,7 @@ func shoot():
 	
 	var bullet = bullet_scene.instantiate() as Bullet
 	bullet.bulletOwner = owner
-	print(bullet.bulletOwner)
 	bullet.damage = owner.damage_per_bullet	
-	print(bullet.damage)
 	get_tree().root.add_child(bullet)
 	
 	var move_direction = (get_global_mouse_position() - global_position).normalized()

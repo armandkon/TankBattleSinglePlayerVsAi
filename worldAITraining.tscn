@@ -641,3 +641,95 @@ collision_mask = 35
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("6_3uvl7")
+
+[node name="SpawnLocation" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(72, 312)
+
+[node name="Node2D25" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(616, 352)
+
+[node name="Node2D26" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(872, 392)
+
+[node name="Node2D27" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(920, 248)
+
+[node name="Node2D28" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(776, 488)
+
+[node name="Node2D29" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(584, 440)
+
+[node name="Node2D30" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(528, 272)
+
+[node name="Node2D17" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(368, 464)
+
+[node name="Node2D18" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(400, 336)
+
+[node name="Node2D19" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(720, 264)
+
+[node name="Node2D20" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(616, 168)
+
+[node name="Node2D21" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(336, 216)
+
+[node name="Node2D22" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(224, 384)
+
+[node name="Node2D23" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(64, 576)
+
+[node name="Node2D24" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(72, 432)
+
+[node name="Node2D2" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(72, 232)
+
+[node name="Node2D3" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(72, 96)
+
+[node name="Node2D4" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(232, 56)
+
+[node name="Node2D5" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(344, 64)
+
+[node name="Node2D6" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(568, 56)
+
+[node name="Node2D7" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(736, 64)
+
+[node name="Node2D8" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(952, 64)
+
+[node name="Node2D9" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(1096, 56)
+
+[node name="Node2D10" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(1104, 160)
+
+[node name="Node2D11" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(1088, 336)
+
+[node name="Node2D12" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(1096, 560)
+
+[node name="Node2D13" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(896, 600)
+
+[node name="Node2D14" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(672, 600)
+
+[node name="Node2D15" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(216, 600)
+
+[node name="Node2D16" type="Node2D" parent="SpawnLocation" groups=["PlayerSpawnPoint"]]
+position = Vector2(392, 616)

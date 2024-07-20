@@ -15,7 +15,10 @@ func get_obs() -> Dictionary:
 	#print("player_ai.human_bullet_position.y: ", player_ai.human_bullet_position.y)
 	#print("player_ai.human_bullet_direction.x: ", player_ai.human_bullet_direction.x)
 	#print("player_ai.human_bullet_direction.y: ", player_ai.human_bullet_direction.y)
-	
+	#print("player_ai.velocity.x: ", player_ai.velocity.x)
+	#print("player_ai.velocity.y: ", player_ai.velocity.y)
+	#print("human_player.velocity.x: ", player_ai.human_velocity.x)
+	#print("human_player.velocity.y: ", player_ai.human_velocity.y)	
 	
 	return {"obs":[
 		player_ai.global_position.x,
@@ -25,6 +28,9 @@ func get_obs() -> Dictionary:
 		player_ai.global_rotation,
 		player_ai.current_distance_from_enemy,		
 		player_ai.angle_in_radians,
+		player_ai.front_ray_collides_with_enemy,		
+		#player_ai.human_velocity.x,
+		#player_ai.human_velocity.y,
 		#player_ai.human_bullet_position.x,
 		#player_ai.human_bullet_position.y,
 		#player_ai.human_bullet_direction.x,
