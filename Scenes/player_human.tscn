@@ -41,13 +41,6 @@ rotation = 1.5708
 scale = Vector2(2.6129, 1.82178)
 polygon = PackedVector2Array(-10, -10.7407, -8.94737, -16.6667, -8.94737, -17.4074, -6.84211, -12.2222, -4.21053, -17.4074, 5.26316, -16.6667, 7.36842, -12.2222, 9.47369, -15.9259, 11.5789, 4.81481, 14.7368, 4.07407, 13.1579, 9.25926, 6.84211, 15.1852, -5.78947, 15.1852, -13.1579, 10, -14.7368, 4.07407, -14.7368, 4.07407, -10.5263, 5.55556)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -60
-limit_top = -60
-limit_right = 1190
-limit_bottom = 685
-metadata/_edit_lock_ = true
-
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("3_rs10v")
 

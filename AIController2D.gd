@@ -23,6 +23,8 @@ func get_obs() -> Dictionary:
 	return {"obs":[
 		player_ai.global_position.x,
 		player_ai.global_position.y,
+		player_ai.velocity.x,
+		player_ai.velocity.y,
 		player_ai.human_position_x,
 		player_ai.human_position_y,
 		player_ai.global_rotation,

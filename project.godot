@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="TankBattle"
-run/main_scene="res://worldAITraining.tscn"
+run/main_scene="res://BatchScene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://GameManager.gd"
+
+[dotnet]
+
+project/assembly_name="TankBattle"
 
 [editor_plugins]
 

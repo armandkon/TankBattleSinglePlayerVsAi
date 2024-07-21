@@ -56,10 +56,15 @@ var front_ray_collides_with_enemy: bool
 # Check if the front ray to the obstacle and enemy is colliding
 var front_ray_obstacle_enemy_collision: bool
 
-var max_consecutive_missed_shots = 60  # Time in seconds before respawning
+var max_consecutive_missed_shots = 100 
 var current_consecutive_missed_shots = 0  # Timestamp of last time to hit enemy
 
 func _ready():
+	
+	print("obstacle_collision_penalty: ", obstacle_collision_penalty)
+	print("leaving_enemy_penalty: ", leaving_enemy_penalty)
+	print("not_angled_to_enemy_penalty: ", not_angled_to_enemy_penalty)
+	print("enemy_behind_obstacle_penalty: ", enemy_behind_obstacle_penalty)
 	
 	for spawn in get_tree().get_nodes_in_group("PlayerSpawnPoint"):
 		if spawn.has_method("get_position"):
@@ -85,7 +90,7 @@ func _physics_process(delta):
 	
 	if current_consecutive_missed_shots > max_consecutive_missed_shots:
 		current_consecutive_missed_shots = 0
-		ai_controller.reward += reset_penalty
+		#ai_controller.reward += reset_penalty
 		respawn()
 	
 # AI movement in 2D-plane
@@ -115,15 +120,30 @@ func _physics_process(delta):
 			ai_controller.reward += obstacle_collision_penalty
 
 # AI receives reward/penalty when approaching or going away from enemy
+	#current_distance_from_enemy = position.distance_to(human_player.position)
+	#
+	#if(current_distance_from_enemy < previous_distance_from_enemy): 
+		#ai_controller.reward += approaching_enemy_reward
+	#else:
+		#ai_controller.reward += leaving_enemy_penalty
+		#
+	#previous_distance_from_enemy = current_distance_from_enemy
+	#
+
+# AI receives reward/penalty when approaching or going away from enemy
 	current_distance_from_enemy = position.distance_to(human_player.position)
-	
-	if(current_distance_from_enemy < previous_distance_from_enemy): 
-		ai_controller.reward += approaching_enemy_reward
+	var distance_change = previous_distance_from_enemy - current_distance_from_enemy
+
+# Apply continuous reward/penalty based on distance change
+	var reward_factor = 0.004  # A scaling factor for the reward
+
+	if distance_change > 0:
+		ai_controller.reward += reward_factor * distance_change  # Positive reward for approaching
 	else:
-		ai_controller.reward += leaving_enemy_penalty
-		
+		ai_controller.reward += reward_factor * distance_change  # Negative penalty for leaving
+
 	previous_distance_from_enemy = current_distance_from_enemy
-	
+
 # AI receives reward when facing towards enemy	
 	var direction_to_enemy = (human_player.position - position).normalized()	
 	var facing_direction = ai_sprite.global_transform.y.normalized()
@@ -134,9 +154,9 @@ func _physics_process(delta):
 	
 	angle_in_radians = acos(angle_cosine)
 	var angle_in_degrees = rad_to_deg(angle_in_radians)
-	var angle_threshold = deg_to_rad(15)  
+	var angle_threshold = deg_to_rad(90)  
 	if angle_in_radians <= angle_threshold:
-		ai_controller.reward += angled_to_enemy_reward
+		ai_controller.reward += get_angle_reward(angle_in_degrees)
 	else:
 		ai_controller.reward += not_angled_to_enemy_penalty
 	
@@ -168,13 +188,13 @@ func _shoot():
 	ai_controller.reward += shooting_reward
 		
 	if(shooting_system_ai.valid_hit):
-		print("ai_hit_target")
+		#print("ai_hit_target")
 		current_consecutive_missed_shots = 0
 		ai_controller.reward += valid_shot_reward
 	else:
-		print("ai_missed_target")
+		#print("ai_missed_target")
 		current_consecutive_missed_shots += 1
-		print("current_consecutive_missed_shots: ", current_consecutive_missed_shots)
+		#print("current_consecutive_missed_shots: ", current_consecutive_missed_shots)
 		ai_controller.reward += missed_target_penalty
 	
 	can_shoot = false
@@ -237,4 +257,31 @@ func on_human_player_shoots(
 	human_bullet_position = bullet_position
 	human_bullet_direction = bullet_direction
 	human_bullet_rotation = bullet_rotation
-	
+
+func get_angle_reward(angle):
+	if angle <= 1:
+		return 0.03
+	elif angle <= 5:
+		return 0.015
+	elif angle <= 10:
+		return 0.009
+	elif angle <= 20:
+		return 0.0075
+	elif angle <= 30:
+		return 0.006
+	elif angle <= 45:
+		return 0.0045
+	elif angle <= 60:
+		return 0.0036
+	elif angle <= 75:
+		return 0.003
+	elif angle <= 90:
+		return 0.002
+	elif angle <= 120:
+		return 0.0016
+	elif angle <= 150:
+		return 0.0012
+	elif angle <= 180:
+		return 0.0006
+	else:
+		return 0.0

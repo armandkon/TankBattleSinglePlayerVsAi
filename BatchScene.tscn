@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch4fi8l1x7yd2"]
+
+[ext_resource type="PackedScene" uid="uid://vcb452nk8aro" path="res://worldAITraining.tscn" id="1_q0nx2"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_ilip6"]
+
+[node name="BatchScene" type="Node2D"]
+
+[node name="WorldAITraining" parent="." instance=ExtResource("1_q0nx2")]
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining2" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(1320, 1584)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining3" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(-8, 1584)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining4" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(2632, 800)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining5" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(1312, 800)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining6" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(-8, 792)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining7" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(2616, 8)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining8" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(2632, 1600)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining9" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(1312, 8)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining10" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(3968, 2408)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining11" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(2648, 2408)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining12" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(1320, 2400)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining13" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(0, 2400)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining14" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(3960, 1600)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining15" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(3944, 808)
+metadata/_edit_lock_ = true
+
+[node name="WorldAITraining16" parent="." instance=ExtResource("1_q0nx2")]
+position = Vector2(3928, 8)
+metadata/_edit_lock_ = true
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_ilip6")
+speed_up = 16
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2624, 1568)
+zoom = Vector2(0.33, 0.33)
