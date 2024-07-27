@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch4fi8l1x7yd2"]
 
 [ext_resource type="PackedScene" uid="uid://vcb452nk8aro" path="res://worldAITraining.tscn" id="1_q0nx2"]
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_ilip6"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_3pwg8"]
 
 [node name="BatchScene" type="Node2D"]
 
@@ -68,10 +68,10 @@ metadata/_edit_lock_ = true
 position = Vector2(3928, 8)
 metadata/_edit_lock_ = true
 
-[node name="Sync" type="Node" parent="."]
-script = ExtResource("2_ilip6")
-speed_up = 16
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2624, 1568)
-zoom = Vector2(0.33, 0.33)
+zoom = Vector2(0.31, 0.31)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_3pwg8")
+speed_up = 16

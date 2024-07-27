@@ -17,6 +17,9 @@ signal bullet_pos_dir(bullet_position: Vector2, bullet_direction: Vector2, bulle
 var movement_direction: Vector2 =  Vector2.ZERO
 var angle
 
+var current_movement = [Vector2.DOWN, Vector2.UP, Vector2.RIGHT, Vector2.LEFT, Vector2.ZERO]
+var random_current_movement_index
+
 func _ready():
 	health_system.died.connect(on_died)
 	health_system.got_shot.connect(on_getting_shot)
@@ -26,10 +29,15 @@ func _ready():
 
 func _physics_process(delta):
 	
-	velocity = movement_direction * speed	
-	if angle:
-		global_rotation = lerp_angle(global_rotation, angle, delta * rotation_speed)
-		
+	#velocity = movement_direction * speed	
+	#if angle:
+		#global_rotation = lerp_angle(global_rotation, angle, delta * rotation_speed)
+	
+	random_current_movement_index = randi() % current_movement.size()	
+	movement_direction = current_movement[random_current_movement_index]
+	
+	velocity = movement_direction * speed
+	
 	move_and_slide()
 	
 	human_position.emit(global_position.x, global_position.y)

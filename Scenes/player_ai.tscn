@@ -28,21 +28,19 @@ properties/3/replication_mode = 1
 scale = Vector2(0.9, 0.9)
 collision_mask = 99
 script = ExtResource("1_pu56q")
-obstacle_collision_penalty = -0.04
 approaching_enemy_reward = 0.001
 leaving_enemy_penalty = -0.006
 angled_to_enemy_reward = 0.1
-not_angled_to_enemy_penalty = -0.006
-enemy_in_line_of_sight_reward = 0.2
-enemy_behind_obstacle_penalty = 0.02
+not_angled_to_enemy_penalty = -0.001
 enemy_completely_out_of_sight_penalty = -0.003
 shooting_reward = 0.01
-valid_shot_reward = 0.2
+valid_shot_reward = 0.15
 missed_target_penalty = -0.004
-enemy_takes_damage_reward = 0.2
-enemy_dies_reward = 1.0
+enemy_takes_damage_reward = 0.05
+on_enemy_death_reward = 1.0
 take_damage_penalty = -0.2
 death_penalty = -1.0
+reset_penalty = -0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.22222, 6.66667)
@@ -110,4 +108,9 @@ points = PackedVector2Array(0, 2.22222, 10, 2.22222, 17.1725, 2.22223, 20, 2.222
 width = 1.0
 default_color = Color(0.333333, 1, 0.886275, 1)
 
+[node name="GameResetTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="damage_taken" from="HealthSystem" to="Lifebar" method="_on_health_system_damage_taken"]
+[connection signal="timeout" from="GameResetTimer" to="." method="_on_game_reset_timer_timeout"]

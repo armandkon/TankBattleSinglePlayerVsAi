@@ -8,6 +8,7 @@ signal bullet_fired(hit_valid_target)
 var move_direction: Vector2 = Vector2.ZERO
 var damage
 var bulletOwner = null
+var hit_valid_target
 
 func _ready():
 	move_direction = Vector2(1,0).rotated(rotation)
@@ -18,12 +19,13 @@ func _process(delta):
 func _on_body_entered(body):
 	
 	if body != bulletOwner:
-		var hit_valid_target = false
 		if body is Player_Human:
 			body.take_damage(damage)
 			hit_valid_target = true
 		elif body is Player_AI:
 			body.take_damage(damage)
+		else:
+			hit_valid_target = false
 		bullet_fired.emit(hit_valid_target)
 		queue_free()
 
