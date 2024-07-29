@@ -20,23 +20,22 @@ var can_shoot := true
 @export var reload_speed_ms := 500.0
 @export var starting_position = Vector2(750, 380)
 # REWARD SYSTEM
-@export var obstacle_collision_penalty: float
-@export var approaching_enemy_reward: float
-@export var leaving_enemy_penalty: float
-@export var angled_to_enemy_reward: float
-@export var not_angled_to_enemy_penalty: float
+var obstacle_collision_penalty: float
+var approaching_enemy_reward: float
+var leaving_enemy_penalty: float
+var angled_to_enemy_reward: float
+var not_angled_to_enemy_penalty: float
 
 var enemy_in_line_of_sight_reward: float = 0.1
 
-@export var enemy_completely_out_of_sight_penalty: float
-@export var shooting_reward: float
-@export var valid_shot_reward: float
-@export var missed_target_penalty: float
-@export var enemy_takes_damage_reward: float
-@export var on_enemy_death_reward: float
-@export var take_damage_penalty: float
-@export var death_penalty: float
-@export var reset_penalty: float
+var enemy_completely_out_of_sight_penalty: float
+var shooting_reward: float
+var valid_shot_reward: float
+var missed_target_penalty: float
+var enemy_takes_damage_reward: float
+var on_enemy_death_reward: float
+var take_damage_penalty: float
+var death_penalty: float
 
 # Enemy's exposed variables to AI
 var human_position_x
@@ -70,9 +69,7 @@ var total_distance_reward = 0
 var total_distance_penalty = 0
 
 var total_delta = 0
-var max_delta = 30
-var time_since_last_check = 0.0
-var check_interval = 0.2  # interval in seconds 0.2 interval is checked every 13 deltas, delta = 0.016
+var max_delta = 30  # interval in seconds 0.2 interval is checked every 13 deltas, delta = 0.016
 
 var reward : float
 
@@ -136,7 +133,9 @@ func _physics_process(delta):
 
 # AI receives reward/penalty when approaching or going away from enemy
 # Apply continuous reward/penalty based on distance change
+
 	current_distance_from_enemy = position.distance_to(human_player.position)
+
 	#var distance_change = previous_distance_from_enemy - current_distance_from_enemy
 	#var reward_factor = 0.004  # A scaling factor for the reward
 #
@@ -148,6 +147,7 @@ func _physics_process(delta):
 	#previous_distance_from_enemy = current_distance_from_enemy
 
 # AI receives reward when facing towards enemy	
+
 	var direction_to_enemy = (human_player.position - position).normalized()	
 	var facing_direction = ai_sprite.global_transform.y.normalized()
 	
@@ -167,22 +167,17 @@ func _physics_process(delta):
 		#ai_controller.reward -= 0.001
 		#total_not_angled_reward -= 0.001
 	
-	# Check if raycast collides with object or enemy
-	
+	# Check if raycast collides with object or enemy	
 	front_ray_collides_with_enemy = false
-		
 	if(front_ray_to_enemy.is_colliding()):
 		var collider 			
 		if(front_ray_to_obstacle_and_enemy.is_colliding()):			
 			collider = front_ray_to_obstacle_and_enemy.get_collider()
 			if(collider.get_instance_id() == human_player.get_instance_id()):
-				#print("Enemy not behind obstacle, raycast collided with: ", collider.name)
 				front_ray_collides_with_enemy = true
 				ai_controller.reward += enemy_in_line_of_sight_reward
 			else:
-				#print("Enemy behind obstacle, raycast collided with: ", collider.name)
-				front_ray_collides_with_enemy = false
-						
+				front_ray_collides_with_enemy = false					
 	else:
 		front_ray_collides_with_enemy = false
 				
@@ -246,7 +241,6 @@ func respawn():
 	human_player.health_system.reset()
 	health_system.reset()
 	total_delta = 0
-	consecutive_valid_shots = 0
 	ai_controller.done = true
 	ai_controller.reset()
 

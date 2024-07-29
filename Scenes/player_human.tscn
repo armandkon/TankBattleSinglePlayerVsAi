@@ -65,6 +65,7 @@ script = ExtResource("5_r8tae")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BulletsLabel" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 72.0
 offset_top = 541.0
 offset_right = 171.0

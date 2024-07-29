@@ -1,0 +1,76 @@
+[gd_scene load_steps=18 format=3 uid="uid://dhvhytosb84u0"]
+
+[ext_resource type="PackedScene" uid="uid://o7asrwwdmq1n" path="res://DifferentTrainingScenes/worldAITraining1.tscn" id="1_0vunw"]
+[ext_resource type="PackedScene" uid="uid://dq5a4boifortb" path="res://DifferentTrainingScenes/worldAITraining2.tscn" id="2_qbqje"]
+[ext_resource type="PackedScene" uid="uid://36il07j6286p" path="res://DifferentTrainingScenes/worldAITraining3.tscn" id="3_7m3em"]
+[ext_resource type="PackedScene" uid="uid://b8807aq138ew8" path="res://DifferentTrainingScenes/worldAITraining4.tscn" id="4_t25cm"]
+[ext_resource type="PackedScene" uid="uid://bd4qg48qiggfk" path="res://DifferentTrainingScenes/worldAITraining5.tscn" id="5_arua6"]
+[ext_resource type="PackedScene" uid="uid://5nv5yl5fkdet" path="res://DifferentTrainingScenes/worldAITraining6.tscn" id="6_iqicr"]
+[ext_resource type="PackedScene" uid="uid://b1kp5oy3rw6n7" path="res://DifferentTrainingScenes/worldAITraining7.tscn" id="7_6qls6"]
+[ext_resource type="PackedScene" uid="uid://ruea6m7nxsg3" path="res://DifferentTrainingScenes/worldAITraining8.tscn" id="8_aoks1"]
+[ext_resource type="PackedScene" uid="uid://hom8yhslqgiy" path="res://DifferentTrainingScenes/worldAITraining9.tscn" id="9_4jo62"]
+[ext_resource type="PackedScene" uid="uid://cm0mrqummi30i" path="res://DifferentTrainingScenes/worldAITraining10.tscn" id="10_3pykf"]
+[ext_resource type="PackedScene" uid="uid://bws7kkryn6k27" path="res://DifferentTrainingScenes/worldAITraining11.tscn" id="11_h2h41"]
+[ext_resource type="PackedScene" uid="uid://6bfc1s18qo4g" path="res://DifferentTrainingScenes/worldAITraining12.tscn" id="12_3ae86"]
+[ext_resource type="PackedScene" uid="uid://bv2ehlciuvpf" path="res://DifferentTrainingScenes/worldAITraining13.tscn" id="13_i5im6"]
+[ext_resource type="PackedScene" uid="uid://dntwp21bvw11q" path="res://DifferentTrainingScenes/worldAITraining14.tscn" id="14_37oht"]
+[ext_resource type="PackedScene" uid="uid://6rl1jd8w6tqk" path="res://DifferentTrainingScenes/worldAITraining15.tscn" id="15_yd4xq"]
+[ext_resource type="PackedScene" uid="uid://be45gmnxs1fgf" path="res://DifferentTrainingScenes/worldAITraining16.tscn" id="16_t0tpj"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="17_4xvhr"]
+
+[node name="BatchSceneDifferentObstacles" type="Node2D"]
+
+[node name="WorldAITraining" parent="." instance=ExtResource("1_0vunw")]
+
+[node name="WorldAITraining2" parent="." instance=ExtResource("2_qbqje")]
+position = Vector2(1288, 0)
+
+[node name="WorldAITraining3" parent="." instance=ExtResource("3_7m3em")]
+position = Vector2(2584, 0)
+
+[node name="WorldAITraining4" parent="." instance=ExtResource("4_t25cm")]
+position = Vector2(3872, -8)
+
+[node name="WorldAITraining5" parent="." instance=ExtResource("5_arua6")]
+position = Vector2(8, 768)
+
+[node name="WorldAITraining6" parent="." instance=ExtResource("6_iqicr")]
+position = Vector2(1304, 768)
+
+[node name="WorldAITraining7" parent="." instance=ExtResource("7_6qls6")]
+position = Vector2(2584, 776)
+
+[node name="WorldAITraining8" parent="." instance=ExtResource("8_aoks1")]
+position = Vector2(3872, 792)
+
+[node name="WorldAITraining9" parent="." instance=ExtResource("9_4jo62")]
+position = Vector2(8, 1544)
+
+[node name="WorldAITraining10" parent="." instance=ExtResource("10_3pykf")]
+position = Vector2(1304, 1536)
+
+[node name="WorldAITraining11" parent="." instance=ExtResource("11_h2h41")]
+position = Vector2(2584, 1552)
+
+[node name="WorldAITraining12" parent="." instance=ExtResource("12_3ae86")]
+position = Vector2(3880, 1560)
+
+[node name="WorldAITraining13" parent="." instance=ExtResource("13_i5im6")]
+position = Vector2(8, 2312)
+
+[node name="WorldAITraining14" parent="." instance=ExtResource("14_37oht")]
+position = Vector2(1304, 2320)
+
+[node name="WorldAITraining15" parent="." instance=ExtResource("15_yd4xq")]
+position = Vector2(2584, 2336)
+
+[node name="WorldAITraining16" parent="." instance=ExtResource("16_t0tpj")]
+position = Vector2(3880, 2352)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("17_4xvhr")
+speed_up = 16
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2512, 1448)
+zoom = Vector2(0.3, 0.3)
